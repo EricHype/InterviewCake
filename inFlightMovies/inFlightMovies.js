@@ -2,14 +2,14 @@
 function findPairedMovies(flightLength, movieLengths) {
 
   let retVal = []
-  let map = {}
+  const set = new Set()
   for(var i =0; i< movieLengths.length; i++) {
 
     const match = flightLength - movieLengths[i]
-    if(map[match]) {
+    if(set.has(match)) {
       retVal.push([movieLengths[i], match])
     } else {
-      map[movieLengths[i]] = true
+      set.add(movieLengths[i])
     }
 
     // n^2 runtime
